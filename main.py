@@ -39,3 +39,8 @@ def nextword_freq(str_inp:str)->dict:
             next_word_table[word_ind, next_word_ind]+=1
 
     return next_word_table
+
+
+def get_next_word(cur_word:str , word_list: list ,word_table)->str:
+    """
+    """
