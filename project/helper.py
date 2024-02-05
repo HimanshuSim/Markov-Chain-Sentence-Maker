@@ -6,20 +6,14 @@ class indexDict(TypedDict):
     index:int   # its corresponding index in the lookup nexword table
 """
 
-
-
-
-## Showing the possible coupling for a conversion to class abstraction in the future
-
-#indexWords_ = getwords()
-#WORD_LIST = get_word_list(indexWords_)
-
 class wordGenerator():
 
     def __init__(self, sample_str:str, **kwargs):
 
         self.wordlist_= self.get_word_list(self.getwords(sample_str))
         self.currword_nextwordtable_ = self.nextword_freq(sample_str)
+        self.curr_next_sorted =  np.argsort(-1*self.currword_nextwordtable_)
+
 
     def getwords(self, str_inp:str)->dict:
 
@@ -39,12 +33,12 @@ class wordGenerator():
         Creates a List of Words to their corresponding indexes For ranking purposes
         """
         words = [0] * len(indexWords)
-        for word, index in indexWords:
+        for word, index in indexWords.items():
             words[index] = word
 
         return words
 
-    def nextword_freq(str_inp:str)->dict:
+    def nextword_freq(self,str_inp:str)->dict:
         """
         str_inp
         """
@@ -65,24 +59,11 @@ class wordGenerator():
         return next_word_table
 
 
-
-    def get_next_word_votes(self, word_table:np.ndarray)->np.ndarray:
-        """
-        Get back the sorted of next words corresponding to the word in the given row index
-        """
-        pass
-
-
-    def get_next_word(cur_word:str , word_list: list ,word_table)->str:
+    def get_next_word(self, cur_word:int )->str:
         """
         """
         pass
 
 
 if __name__ == '__main__':
-    string = 'hello world'#'the quick brown fox jumped over the lazy dog'
-    print(" Freq Table: ")
-    print( freqtable )
-
-    print(" indexes")
-    print( indexes )
+    pass
